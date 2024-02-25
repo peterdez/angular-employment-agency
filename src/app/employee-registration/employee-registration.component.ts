@@ -10,7 +10,9 @@ import { EmployeeService } from '../employee.service';
 })
 export class EmployeeRegistrationComponent implements OnInit {
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(
+    private employeeService: EmployeeService
+    ) { }
   
   //list: any = []
   //employees = EMPLOYEES;
@@ -59,6 +61,7 @@ deleteEmployee(index: number) {
 
 deleteAllEmployees() {
   this.employeeService.DeleteAll();
+  window.location.reload();
   //this.Save();
 }
 
