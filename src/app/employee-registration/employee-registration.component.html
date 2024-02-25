@@ -1,0 +1,38 @@
+<h6 class="text-center mt-4">Employee Registration</h6>
+
+<div class="row m-3">
+    
+        <div class="mb-3">
+          <label for="firstName" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="firstName" [(ngModel)]="employee.firstName">
+        </div>
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="lastName" [(ngModel)]="employee.lastName">
+        </div>
+        <button class="btn btn-primary" (click)="addEmployee()">Submit</button>
+
+</div>
+
+<div class="row">
+      <div class="col" *ngFor="let employee of employees; let i=index">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">
+                <span>{{employee.id}}</span>
+                <a routerLink="/detail/{{employee.id}}">
+                {{employee.firstName + ' ' + employee.lastName}}
+            </a>
+            </h5>
+            <a routerLink="/detail/{{employee.id}}/edit" class="btn btn-light btn-sm">Edit</a>
+            <button class="btn btn-dark btn-sm" (click)="deleteEmployee(i)">Delete</button>
+          </div>
+        </div>
+        </div>
+</div>
+
+<div class="row" *ngIf="employees.length > 0">
+    <div class="col-12">
+        <button (click)="deleteAllEmployees()">Delete All</button>
+    </div>
+</div>
